@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Heart, Logs } from "lucide-react";
+import { Heart, Logs, LayoutDashboard } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [serviceView, setServiceView] = useState(false);
@@ -66,8 +67,8 @@ const Header = () => {
           </nav>
           {/* Right side */}
           <div className="flex gap-4">
-            <Heart size={28} className=" cursor-pointer" />
-            <Logs size={28} className="cursor-pointer" />
+            <Link to={"/admin"}>Admin Dashboard</Link>
+            <LayoutDashboard size={28} className="cursor-pointer" />
           </div>
         </div>
       </header>
