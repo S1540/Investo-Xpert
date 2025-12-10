@@ -1,8 +1,27 @@
 import React from "react";
 import CollectionCardDemo from "../../common/CollectionCard";
 import { MoveRight, MoveLeft } from "lucide-react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedCollections = () => {
+  const [propertysDetails, setPropertysDetails] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api");
+        const data = await response.json();
+        setPropertysDetails(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <section className="bg-gray-100 min-h-screen mx-auto py-16">
       <div className="max-w-7xl w-full mx-auto px-4">
@@ -24,9 +43,11 @@ const FeaturedCollections = () => {
 
         {/* Cardss */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <CollectionCardDemo />
-          <CollectionCardDemo />
-          <CollectionCardDemo />
+          {propertysDetails.map((property, index) => (
+            <Link to={`/property/${property._id}`}>
+              <CollectionCardDemo key={index} property={property} />
+            </Link>
+          ))}
         </div>
         <div className="flex gap-4 py-10 justify-center">
           <MoveLeft

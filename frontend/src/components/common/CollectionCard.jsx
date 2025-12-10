@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import { Heart, MapPin, Maximize2, Bed, Bath } from "lucide-react";
 
-const CollectionCard = ({
-  image = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
-  propertyName = "Luxury Villa",
-  price = "2.5 Cr",
-  location = "Gurugram, Haryana",
-  size = "2500 sq.ft",
-  bedrooms = 4,
-  bathrooms = 3,
-  status = "For Sale",
-}) => {
+const CollectionCard = ({ property }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -18,8 +9,8 @@ const CollectionCard = ({
       {/* Image Container */}
       <div className="relative h-64 overflow-hidden">
         <img
-          src={image}
-          alt={propertyName}
+          src={`http://localhost:5000/${property.image}`}
+          alt={property.propertyName}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
 
@@ -28,7 +19,7 @@ const CollectionCard = ({
 
         {/* Status Badge */}
         <div className="absolute top-4 left-4 bg-linear-to-r from-pink-600 to-pink-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-          {status}
+          {property.status}
         </div>
 
         {/* Like Button */}
@@ -49,18 +40,18 @@ const CollectionCard = ({
       <div className="p-5">
         {/* Property Name */}
         <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-pink-600 transition-colors duration-300">
-          {propertyName}
+          {property.propertyName}
         </h3>
 
         {/* Price */}
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-3xl font-bold ">₹{price}</span>
+          <span className="text-3xl font-bold ">₹{property.price} Cr</span>
         </div>
 
         {/* Location */}
         <div className="flex items-center gap-2 text-gray-600 mb-4">
           <MapPin size={18} className="text-pink-600" />
-          <span className="text-sm">{location}</span>
+          <span className="text-sm">{property.location}</span>
         </div>
 
         {/* Divider */}
@@ -71,14 +62,16 @@ const CollectionCard = ({
           <div className="flex flex-col items-center p-2 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors duration-300">
             <Maximize2 size={20} className="text-pink-600 mb-1" />
             <span className="text-xs text-gray-500">Size</span>
-            <span className="text-sm font-semibold text-gray-800">{size}</span>
+            <span className="text-sm font-semibold text-gray-800">
+              {property.size}
+            </span>
           </div>
 
           <div className="flex flex-col items-center p-2 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors duration-300">
             <Bed size={20} className="text-pink-600 mb-1" />
             <span className="text-xs text-gray-500">Bedrooms</span>
             <span className="text-sm font-semibold text-gray-800">
-              {bedrooms}
+              {property.bedrooms}
             </span>
           </div>
 
@@ -86,7 +79,7 @@ const CollectionCard = ({
             <Bath size={20} className="text-pink-600 mb-1" />
             <span className="text-xs text-gray-500">Bathrooms</span>
             <span className="text-sm font-semibold text-gray-800">
-              {bathrooms}
+              {property.bathrooms}
             </span>
           </div>
         </div>
