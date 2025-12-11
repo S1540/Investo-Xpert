@@ -49,7 +49,7 @@ const FeaturedCollections = () => {
         )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {propertysDetails.map((property, index) => (
-            <Link to={`/property/${property._id}`}>
+            <Link key={index} to={`/property/${property._id}`}>
               <CollectionCardDemo key={index} property={property} />
             </Link>
           ))}

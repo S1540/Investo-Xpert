@@ -19,7 +19,7 @@ const CollectionCard = ({ property }) => {
 
         {/* Status Badge */}
         <div className="absolute top-4 left-4 bg-linear-to-r from-pink-600 to-pink-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-          {property.status}
+          {property.forSale ? "For Sale" : "For Rent"}
         </div>
 
         {/* Like Button */}
@@ -45,7 +45,7 @@ const CollectionCard = ({ property }) => {
 
         {/* Price */}
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-3xl font-bold ">₹{property.price} Cr</span>
+          <span className="text-3xl font-bold ">₹{property.price} </span>
         </div>
 
         {/* Location */}
@@ -85,7 +85,7 @@ const CollectionCard = ({ property }) => {
         </div>
 
         {/* View Details Button */}
-        <button className="w-full mt-4 bg-pink-600 hover:bg-pink-700  text-white py-2.5 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer">
+        <button className="w-full mt-4 bg-pink-600 hover:bg-pink-700  text-white py-2.5 rounded-sm font-semibold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer">
           View Details
         </button>
       </div>

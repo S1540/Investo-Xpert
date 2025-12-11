@@ -3,8 +3,8 @@ import Header from "./components/common/Header";
 import HomePage from "./components/pages/Home/HomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
-import CollectionDetails from "./components/pages/Home/CollectionDetails";
 import Footer from "./components/common/Footer";
+import PropertyDetails from "./components/pages/Home/PropertyDetails";
 
 // import "./App.css";
 
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<Dashboard />} />
-          <Route path="/property/:id" element={<CollectionDetails />} />
+          <Route path="/property/:id" element={<PropertyDetails />} />
         </Routes>
         <Footer />
       </Router>

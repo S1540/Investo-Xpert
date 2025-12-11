@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
       <div className="max-w-7xl w-full mx-auto px-4">
-        {/* Footer Grid */}
+        {/* Footer Grid.... */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo + Description */}
           <div>
@@ -116,7 +116,7 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-pink-500" />
                 <a href="tel:+919876543210" className="hover:text-white">
-                  +91 98765 43210
+                  +91 xxxxxxxxxx
                 </a>
               </li>
               <li className="flex items-center gap-2">
