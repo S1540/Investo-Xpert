@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Property = require("../models/PropertySchema");
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 
 // multer setupp
 const storage = multer.diskStorage({
@@ -86,6 +88,21 @@ router.delete("/:id", async (req, res) => {
     const property = await Property.findByIdAndDelete(id);
     res.status(200).json(property);
     // console.log(property);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
+});
+
+// get price post req
+router.post("/getPrice", async (req, res) => {
+  try {
+    const Configurations = req.body;
+    const filePath = path.join(__dirname, "Configurations.json");
+    fs.writeFileSync(filePath, JSON.stringify(Configurations));
+    res.status(200).json({
+      message:
+        "Configurations Send Successfully... Our team will contact you soon",
+    });
   } catch (error) {
     res.status(500).json({ message: "Server Error", error });
   }

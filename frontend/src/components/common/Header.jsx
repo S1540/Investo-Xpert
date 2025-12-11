@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Heart, Logs, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 const Header = () => {
   const [serviceView, setServiceView] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = ["Project", "SUPPORT", "Terms & Conditions", "Services"];
 
@@ -15,9 +16,30 @@ const Header = () => {
     "Compare Properties",
   ];
 
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/") {
+      const handleScroll = () => {
+        if (window.scrollY > 80) {
+          setScrolled(true);
+        } else {
+          setScrolled(false);
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [location.pathname]);
+
   return (
     <>
-      <header className="max-w-full w-full bg-zinc-800 text-gray-200 fixed top-0 right-0 left-0 z-50">
+      <header
+        className={`max-w-full w-full text-gray-200 fixed top-0 right-0 left-0 z-50 transition-all duration-300 ease-in-out ${
+          scrolled ? "bg-zinc-800" : "bg-transparent"
+        } `}
+      >
         <div className="flex justify-around items-center p-2">
           {/* left side */}
           <div className="flex gap-2 font-sans items-center font-medium">

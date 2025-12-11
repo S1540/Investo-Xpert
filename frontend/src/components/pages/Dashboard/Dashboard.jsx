@@ -9,6 +9,7 @@ import {
   Bath,
   Trash2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
@@ -475,12 +476,14 @@ const Dashboard = () => {
                     key={property._id}
                     className="bg-gray-50 border border-gray-200 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-200"
                   >
-                    <img
-                      loading="lazy"
-                      src={`http://localhost:5000/${property.image}`}
-                      alt={property.propertyName}
-                      className="w-full h-40 object-cover rounded-sm mb-3"
-                    />
+                    <Link to={`/property/${property._id}`}>
+                      <img
+                        loading="lazy"
+                        src={`http://localhost:5000/${property.image}`}
+                        alt={property.propertyName}
+                        className="w-full h-40 object-cover rounded-sm mb-3"
+                      />
+                    </Link>
 
                     <h3 className="text-xl font-bold text-pink-600 mb-1">
                       {property.propertyName}
