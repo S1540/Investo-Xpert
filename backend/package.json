@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install --prefix ../frontend && npm run build --prefix ../frontend && node server.js"
+    "start": "server.js"
   },
   "keywords": [],
   "author": "",
