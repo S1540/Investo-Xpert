@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
+const PORT = process.env.PORT || 5000;
 const path = require("path");
 const propertyRoutes = require("./routes/propertyRoutes");
 
@@ -19,6 +20,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
