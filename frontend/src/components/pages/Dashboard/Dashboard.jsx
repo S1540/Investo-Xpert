@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Upload, X } from "lucide-react";
 import { useEffect } from "react";
+import { redirect } from "react-router-dom";
 
 const Dashboard = () => {
   const [image, setImage] = useState(null);
@@ -88,6 +89,7 @@ const Dashboard = () => {
           forRent: false,
         });
         setImage(null);
+        redirect("/");
       }
     } catch (err) {
       console.log(err);

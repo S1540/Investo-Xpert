@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
-const mongoose = require("mongoose");
+const path = require("path");
 const propertyRoutes = require("./routes/propertyRoutes");
 
 dotenv.config();
@@ -12,6 +12,12 @@ app.use(express.json()); // Only for normal JSON
 app.use("/uploads", express.static("uploads")); // Image serve
 
 app.use("/api", propertyRoutes);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "..", "frontend", "dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

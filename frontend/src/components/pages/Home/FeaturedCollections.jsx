@@ -42,6 +42,11 @@ const FeaturedCollections = () => {
         </div>
 
         {/* Cardss */}
+        {propertysDetails && propertysDetails.length === 0 && (
+          <p className="text-center text-3xl animate-pulse ">
+            No properties found.. pls add property in dashboard
+          </p>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {propertysDetails.map((property, index) => (
             <Link to={`/property/${property._id}`}>

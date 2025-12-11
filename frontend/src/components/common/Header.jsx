@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [serviceView, setServiceView] = useState(false);
 
-  const navItems = ["Project", "BLOGS", "Terms & Conditions", "Services"];
+  const navItems = ["Project", "SUPPORT", "Terms & Conditions", "Services"];
 
   const ServicesNav = [
     "Rental Properties",
@@ -21,11 +21,13 @@ const Header = () => {
         <div className="flex justify-around items-center p-2">
           {/* left side */}
           <div className="flex gap-2 font-sans items-center font-medium">
-            <img
-              src="https://www.investoxpert.com/_next/image?url=%2FIX-white-logo.png&w=384&q=75"
-              alt="INVESTOXPERT"
-              className="h-14 cursor-pointer"
-            />
+            <Link to={"/"}>
+              <img
+                src="https://www.investoxpert.com/_next/image?url=%2FIX-white-logo.png&w=384&q=75"
+                alt="INVESTOXPERT"
+                className="h-14 cursor-pointer"
+              />
+            </Link>
             <select name="city" id="city" className="border-none outline-0 ">
               <option disabled value="Select City">
                 Select City
