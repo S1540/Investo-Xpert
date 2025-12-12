@@ -101,7 +101,7 @@ router.post("/getPrice", async (req, res) => {
     fs.writeFileSync(filePath, JSON.stringify(Configurations));
     res.status(200).json({
       message:
-        "Configurations Send Successfully... Our team will contact you soon",
+        "Configurations Send Successfully... Our team will contact you soon.",
     });
   } catch (error) {
     res.status(500).json({ message: "Server Error", error });
