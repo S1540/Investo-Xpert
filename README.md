@@ -40,6 +40,6 @@ This project is built using the MERN stack architecture.
 
 The project uses a standard multi-repository structure separating the client and server codebases.
 
-INVESTOXPERT/ ├── backend/ # Node.js/Express Server Code │ ├── models/ # Mongoose Schemas (PropertySchema.js) │ ├── routes/ # Express API Routes (propertyRoutes.js) │
-└── server.js # Server Entry Point & DB Connection 
-└── frontend/ # React Application Code ├── src/ │ ├── components/pages/HomePage Or Dashboard folder 
+INVESTOXPERT/ ├── backend/ # Node.js/Express Server Code │ ├── models/ # Mongoose Schemas (PropertySchema.js) │ ├── routes/ # Express API Routes (propertyRoutes.js) │ server.js # Server Entry Point & DB Connection 
+
+INVESTOXPERT/ frontend/ # React Application Code ├── src/ │ ├── components/pages/HomePage Or Dashboard folder 
