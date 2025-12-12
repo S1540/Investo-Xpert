@@ -427,6 +427,7 @@ const PropertyDetails = () => {
                       >
                         <input
                           type="checkbox"
+                          required
                           checked={Configurations.amenities.includes(amenity)}
                           onChange={() => updateAmenities(amenity)}
                           className="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-pink-500"

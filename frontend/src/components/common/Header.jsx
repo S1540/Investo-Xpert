@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Heart, Logs, LayoutDashboard } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 const Header = () => {
   const [serviceView, setServiceView] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navItems = ["Project", "SUPPORT", "Terms & Conditions", "Services"];
 
@@ -16,7 +17,6 @@ const Header = () => {
     "Compare Properties",
   ];
 
-  const location = useLocation();
   useEffect(() => {
     if (location.pathname === "/") {
       const handleScroll = () => {
@@ -26,19 +26,26 @@ const Header = () => {
           setScrolled(false);
         }
       };
+
       window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      setScrolled(true);
     }
   }, [location.pathname]);
 
   return (
     <>
       <header
-        className={`max-w-full w-full text-gray-200 fixed top-0 right-0 left-0 z-50 transition-all duration-300 ease-in-out ${
-          scrolled ? "bg-zinc-800" : "bg-transparent"
-        } `}
+        className={`max-w-full w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
+          ${
+            location.pathname === "/"
+              ? scrolled
+                ? "bg-zinc-800"
+                : "bg-transparent"
+              : "bg-zinc-800"
+          }
+        `}
       >
         <div className="flex justify-around items-center p-2">
           {/* left side */}
@@ -50,7 +57,12 @@ const Header = () => {
                 className="h-14 cursor-pointer"
               />
             </Link>
-            <select name="city" id="city" className="border-none outline-0 ">
+
+            <select
+              name="city"
+              id="city"
+              className="border-none outline-0 py-2 px-4 text-white bg-zinc-800"
+            >
               <option disabled value="Select City">
                 Select City
               </option>
@@ -61,8 +73,9 @@ const Header = () => {
               <option value="Pune">Pune</option>
             </select>
           </div>
+
           {/* nav bar */}
-          <nav className="hidden lg:flex gap-6 uppercase font-medium  ">
+          <nav className="hidden lg:flex gap-6 uppercase font-medium text-white">
             {navItems.map((item, index) => (
               <div
                 className="relative"
@@ -72,7 +85,8 @@ const Header = () => {
                   item === "Services" && setServiceView(false)
                 }
               >
-                <a href="#">{item}</a>
+                <span className="cursor-pointer">{item}</span>
+
                 {item === "Services" && serviceView && (
                   <div className="absolute top-3 left-0 mt-2 w-56 bg-black rounded-lg shadow-xl border border-gray-700 py-2 z-50">
                     {ServicesNav.map((service, idx) => (
@@ -89,8 +103,9 @@ const Header = () => {
               </div>
             ))}
           </nav>
+
           {/* Right side */}
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center text-white">
             <Link to={"/admin"}>Admin Dashboard</Link>
             <LayoutDashboard size={28} className="cursor-pointer" />
           </div>

@@ -9,8 +9,8 @@ const propertyRoutes = require("./routes/propertyRoutes");
 dotenv.config();
 
 app.use(cors());
-app.use(express.json()); // Only for normal JSON
-app.use("/uploads", express.static("uploads")); // Image serve
+app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 app.use("/api", propertyRoutes);
 if (process.env.NODE_ENV === "production") {
