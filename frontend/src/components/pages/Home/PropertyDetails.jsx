@@ -50,6 +50,20 @@ const PropertyDetails = () => {
 
   const handleGetPrice = async () => {
     try {
+      if (
+        !Configurations.propertyType ||
+        !Configurations.furnishing ||
+        !Configurations.bedrooms ||
+        !Configurations.bathrooms ||
+        !Configurations.balconies ||
+        !Configurations.parking ||
+        !Configurations.flat ||
+        !Configurations.amenities.length
+      ) {
+        alert("Please fill all the fields");
+        return;
+      }
+
       const response = await fetch("http://localhost:5000/api/getPrice", {
         method: "POST",
         headers: {
@@ -427,7 +441,6 @@ const PropertyDetails = () => {
                       >
                         <input
                           type="checkbox"
-                          required
                           checked={Configurations.amenities.includes(amenity)}
                           onChange={() => updateAmenities(amenity)}
                           className="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-pink-500"

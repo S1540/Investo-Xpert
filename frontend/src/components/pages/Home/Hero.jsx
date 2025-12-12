@@ -33,7 +33,7 @@ const Hero = () => {
           <div className="flex gap-2 mb-2 sm:mb-0">
             <button
               onClick={() => setSearchType("buy")}
-              className={`px-4 py-2 rounded-l-md font-semibold transition-all duration-200 ${
+              className={`px-4 py-2 rounded-l-md font-semibold cursor-pointer transition-all duration-200 ${
                 searchType === "buy"
                   ? "bg-pink-600 text-white shadow-md"
                   : "bg-white/30 text-white hover:bg-white/50"
@@ -43,7 +43,7 @@ const Hero = () => {
             </button>
             <button
               onClick={() => setSearchType("rent")}
-              className={`px-4 py-2 rounded-r-md font-semibold transition-all duration-200 ${
+              className={`px-4 py-2 rounded-r-md font-semibold cursor-pointer transition-all duration-200 ${
                 searchType === "rent"
                   ? "bg-pink-600 text-white shadow-md"
                   : "bg-white/30 text-white hover:bg-white/50"
@@ -63,7 +63,7 @@ const Hero = () => {
               } properties: locality, project, builder...`}
               className="w-full bg-transparent outline-none text-gray-900 px-2 py-2 font-medium placeholder-gray-600"
             />
-            <button className="bg-pink-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-pink-700 transition-all shadow-md hover:shadow-lg">
+            <button className="bg-pink-600 text-white px-6 py-2 rounded-md font-semibold cursor-pointer hover:bg-pink-700 transition-all shadow-md hover:shadow-lg">
               Search
             </button>
           </div>
@@ -71,10 +71,10 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <button className="bg-pink-600 hover:bg-pink-800 text-white px-10 py-3 rounded-md font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+          <button className="bg-pink-600 hover:bg-pink-800 text-white px-10 py-3 rounded-md font-semibold transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
             Explore Properties
           </button>
-          <button className="bg-white/20 hover:bg-white/30 border-2 border-white px-10 py-3 rounded-md font-semibold transition-all duration-300 shadow-lg">
+          <button className="bg-white/20 hover:bg-white/30 border-2 border-white px-10 py-3 rounded-md font-semibold transition-all duration-300 shadow-lg cursor-pointer">
             Contact Us
           </button>
         </div>
