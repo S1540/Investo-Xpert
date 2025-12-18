@@ -26,9 +26,15 @@ router.post("/signup", async (req, res) => {
     const token = jwt.sign({ email }, "secret");
     res.cookie("token", token);
 
-    res.status(201).json({ message: "Admin created successfully" });
+    res.status(201).json({
+      success: true,
+      message: "Admin created successfully",
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
   }
 });
 
@@ -49,7 +55,12 @@ router.post("/login", async (req, res) => {
         console.log(token);
         res.status(200).json({
           message: "Login successful",
-          sucess: true,
+          success: true,
+        });
+      } else {
+        res.status(400).json({
+          message: "Email or password is incorrect",
+          success: false,
         });
       }
     });

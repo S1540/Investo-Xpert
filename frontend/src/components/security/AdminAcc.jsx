@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { data, useNavigate } from "react-router-dom";
 
 const AdminAcc = () => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
-  const [data, setData] = useState({});
-  const [loginValue, setLoginValue] = useState({});
-  const [signupValue, setSignupValue] = useState({});
+  const [message, setMessage] = useState({});
+  const [loginValue, setLoginValue] = useState({ email: "", password: "" });
+  const [signupValue, setSignupValue] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+  });
 
   /*
   ================================
@@ -33,7 +40,13 @@ const AdminAcc = () => {
         body: JSON.stringify(loginValue),
       });
       const data = await response.json();
-      if (data.sucess) window.location.href = "/admin";
+
+      if (data.success) {
+        setMessage(data);
+        navigate("/admin");
+      } else {
+        setMessage(data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -70,6 +83,15 @@ const AdminAcc = () => {
           // Login Form
           <>
             <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
+            {message.message && (
+              <p
+                className={`text-center mb-4 py-1 rounded-sm text-white font-medium ${
+                  message.success ? "bg-green-500" : "bg-red-500"
+                }`}
+              >
+                {message.message}
+              </p>
+            )}
             <form onSubmit={submitLogin} className="flex flex-col gap-4">
               <input
                 type="email"
