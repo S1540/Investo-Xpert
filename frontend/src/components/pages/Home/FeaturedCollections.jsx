@@ -65,8 +65,11 @@ const FeaturedCollections = () => {
             size={35}
             className="bg-pink-600 px-2 py-2 rounded-sm transition-all duration-300 hover:shadow-lg hover:bg-pink-700 transform hover:translate-x-0.5 cursor-pointer"
           />
-          <button className="bg-pink-600 hover:bg-pink-700  text-white py-1 rounded-sm px-4 font-semibold transition-all duration-300 hover:shadow-lg transform hover:translate-x-0.5 cursor-pointer">
-            View All
+          <button className="group relative bg-linear-to-r from-pink-600 to-pink-500 text-white px-8 py-2 rounded-sm font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-pink-600/50 overflow-hidden">
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            <span className="relative flex items-center justify-center gap-2">
+              View All
+            </span>
           </button>
         </div>
       </div>

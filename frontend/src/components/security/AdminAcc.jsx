@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { data, useNavigate } from "react-router-dom";
 
 const AdminAcc = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [message, setMessage] = useState({});
-  const [loginValue, setLoginValue] = useState({ email: "", password: "" });
+  const [loginValue, setLoginValue] = useState({
+    email: "",
+    password: "",
+  });
   const [signupValue, setSignupValue] = useState({
     name: "",
     email: "",
@@ -44,6 +48,7 @@ const AdminAcc = () => {
       if (data.success) {
         setMessage(data);
         navigate("/admin");
+        setMessage({});
       } else {
         setMessage(data);
       }
@@ -64,9 +69,20 @@ const AdminAcc = () => {
         body: JSON.stringify(signupValue),
       });
       const data = await response.json();
-      console.log(data);
+      setMessage(data);
+      if (data.success) {
+        setSignupValue({
+          name: "",
+          email: "",
+          password: "",
+          confirmpassword: "",
+        });
 
-      window.location.href = "/admin/login";
+        setTimeout(() => {
+          setIsLogin(true);
+          setMessage({});
+        }, 1000);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -79,6 +95,15 @@ const AdminAcc = () => {
   return (
     <section className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="max-w-md w-full p-6 bg-white rounded shadow">
+        {/* Admin Warning Banner */}
+        <div className="bg-red-400 text-white px-4 py-3 rounded mb-6 text-center">
+          <p className="font-bold text-lg">⚠️ ADMIN ACCESS ONLY</p>
+          <p className="text-sm mt-1">
+            This page is restricted to administrators. Unauthorized access is
+            prohibited.
+          </p>
+        </div>
+
         {isLogin ? (
           // Login Form
           <>
@@ -131,6 +156,16 @@ const AdminAcc = () => {
             <h2 className="text-2xl font-bold mb-4 text-center">
               Admin Signup
             </h2>
+            {message.message && (
+              <p
+                className={`text-center mb-4 py-1 rounded-sm text-white font-medium ${
+                  message.success ? "bg-green-500" : "bg-red-500"
+                }
+              `}
+              >
+                {message.message}
+              </p>
+            )}
             <form onSubmit={submitSignup} className="flex flex-col gap-4">
               <input
                 type="text"
