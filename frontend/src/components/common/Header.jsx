@@ -106,7 +106,7 @@ const Header = () => {
 
           {/* Right side */}
           <div className="flex gap-4 items-center text-white">
-            <Link to={"/admin"}>Admin Dashboard</Link>
+            <Link to={"/admin/login"}>Admin Dashboard</Link>
             <LayoutDashboard size={28} className="cursor-pointer" />
           </div>
         </div>

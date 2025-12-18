@@ -6,6 +6,7 @@ import Dashboard from "./components/pages/Dashboard/Dashboard";
 import Footer from "./components/common/Footer";
 import PropertyDetails from "./components/pages/Home/PropertyDetails";
 import ScrollToTop from "./components/common/ScrollToTop";
+import AdminAcc from "./components/security/AdminAcc";
 
 // import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/login" element={<AdminAcc />} />
           <Route path="/property/:id" element={<PropertyDetails />} />
         </Routes>
         <Footer />
